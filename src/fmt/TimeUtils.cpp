@@ -12,11 +12,12 @@
 #include "TimeUtils.hpp"
 
 namespace dgt::fmt {
-	std::string get_timestamp() {
-		std::time_t time_now = std::time(nullptr);
-		char result[64];
-		// TODO(dgt): review this procedure to be "more secure" for msvc
-		std::strftime(result, sizeof result, "%F %T", std::localtime(&time_now));
-		return result;
-	}
+std::string get_timestamp()
+{
+    std::time_t time_now = std::time(nullptr);
+    char result[64];
+    // TODO(dgt): review this procedure to be "more secure" for msvc
+    std::strftime(result, sizeof result, "%F %T", std::localtime(&time_now));
+    return result;
+}
 }

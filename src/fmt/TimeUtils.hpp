@@ -3,5 +3,5 @@
 #include <string>
 
 namespace dgt::fmt {
-	std::string get_timestamp();
+std::string get_timestamp();
 }
