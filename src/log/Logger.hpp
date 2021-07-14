@@ -7,7 +7,7 @@
 namespace dgt::log {
 class Logger {
 public:
-    Logger() = default;
+    Logger();
     void debug(const std::string& message);
 };
 }
