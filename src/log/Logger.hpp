@@ -2,13 +2,12 @@
 
 #include <string>
 
+//#include "Queue.hpp"
 
-namespace log {
+namespace dgt::log {
     class Logger {
     public:
-        static void debug(const std::string &message);
-
-    private:
-        static void print_timestamp();
+		Logger() = default;
+        void debug(const std::string &message);
     };
 }
