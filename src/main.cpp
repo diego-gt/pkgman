@@ -6,7 +6,7 @@
 
 int main()
 {
-    std::cout << "swu version 0.0.1" << "\n";
+    std::cout << "swu version 0.0.2" << "\n";
 
     auto lg = dgt::log::Logger();
 
