@@ -1,16 +1,19 @@
 #include <iostream>
-#include "pkg/PackageFileParser.hpp"
 
-int main() {
-    std::cout << "swu version 0.0.1" << std::endl;
+#include "fmt/TimeUtils.hpp"
+#include "fmt/Delimiter.hpp"
+#include "log/Logger.hpp"
 
-    std::string test_pkg_file = "data/make-PKGBUILD";
-    pkg::PackageFileParser pfp (test_pkg_file, pkg::PFF_ARCH);
+int main()
+{
+    std::cout << "swu version 0.0.2" << "\n";
 
-    pfp.init();
+    auto lg = dgt::log::Logger();
 
-    pkg::Package make = pfp.parse();
-    make.print_details();
+    lg.debug("Logging...");
+	lg.error("Logging...");
+	lg.warning("Logging...");
+	lg.info("Logging...");
 
     return 0;
 }
