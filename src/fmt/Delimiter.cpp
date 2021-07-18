@@ -3,7 +3,7 @@
 
 #include "Delimiter.hpp"
 
-namespace dgt::fmt {
+namespace pm::fmt {
 void section_header(char delimiter, unsigned int length, const std::string& section_name)
 {
     // NOTE(dgt): Final length will be length - 1 when section_name.size() is odd.

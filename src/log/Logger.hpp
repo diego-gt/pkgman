@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace dgt::log {
+namespace pm::log {
 enum LogLevel {
     Error,
     Warning,
@@ -20,12 +20,12 @@ enum LogLevel {
 class Logger {
 public:
     Logger();
-    void error(const std::string& message);
-    void warning(const std::string& message);
-    void debug(const std::string& message);
-    void info(const std::string& message);
+    static void error(const std::string& message);
+    [[maybe_unused]] static void warning(const std::string& message);
+    static void debug(const std::string& message);
+    static void info(const std::string& message);
 
 private:
-    const std::string prefix_log(LogLevel level);
+    static std::string prefix_log(LogLevel level);
 };
 }

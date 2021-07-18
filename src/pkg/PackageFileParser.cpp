@@ -1,28 +1,24 @@
 #include <fstream>
-#include <iostream>
 #include <regex>
 #include <string>
 
 #include "PackageFileParser.hpp"
 
-namespace dgt::pkg {
+namespace pm::pkg {
 PackageFileParser::PackageFileParser(const std::string& filepath, PackageFileFormat file_format)
 {
     m_filepath = filepath;
     m_file_format = file_format;
-	m_logger = nullptr;
 }
 
-void PackageFileParser::init(log::Logger* logger)
+void PackageFileParser::init()
 {
-    m_logger = logger;
-
     switch (m_file_format) {
     case PFF_ARCH:
-        m_logger->info("Using <ARCH>-style package file");
+        log::Logger::info("Using <ARCH>-style package file");
         break;
     case PFF_DEBIAN:
-        m_logger->info("Using <DEBIAN>-style package file");
+        log::Logger::info("Using <DEBIAN>-style package file");
         break;
     }
 
@@ -31,10 +27,10 @@ void PackageFileParser::init(log::Logger* logger)
 
     // TODO: research if check for is_open is needed or not
     if (!pkg_file.is_open()) {
-        m_logger->error("Package file could not be opened");
+        log::Logger::error("Package file could not be opened");
         m_is_init = false;
     } else {
-        m_logger->info("Populating package file details.");
+        log::Logger::info("Populating package file details.");
         while (std::getline(pkg_file, curr_line)) {
             m_file_content.push_back(curr_line);
         }
@@ -42,7 +38,7 @@ void PackageFileParser::init(log::Logger* logger)
     }
 
     std::string msg = "Read " + std::to_string(m_file_content.size()) + " lines.";
-    m_logger->debug(msg);
+    log::Logger::debug(msg);
 }
 
 Package PackageFileParser::parse()
@@ -50,7 +46,7 @@ Package PackageFileParser::parse()
     Package result;
 
     if (!m_is_init) {
-        m_logger->error("Package file not initialized.");
+        log::Logger::error("Package file not initialized.");
         return result;
     }
 
@@ -72,7 +68,7 @@ Package PackageFileParser::parse()
         }
 
         if (std::regex_search(line, matches_name, rx_pkg_name)) {
-            m_logger->info("Found match for package name...");
+            log::Logger::info("Found match for package name...");
 
             std::string _name = matches_name[1].str();
 
@@ -81,7 +77,7 @@ Package PackageFileParser::parse()
         }
 
         if (std::regex_search(line, matches_version, rx_pkg_version)) {
-            m_logger->info("Found match for package version...");
+            log::Logger::info("Found match for package version...");
 
             std::string _version = matches_version[1].str();
 
@@ -90,7 +86,7 @@ Package PackageFileParser::parse()
         }
 
         if (std::regex_search(line, matches_release, rx_pkg_release)) {
-            m_logger->info("Found match for package release...");
+            log::Logger::info("Found match for package release...");
             std::string _release = matches_release[1].str();
 
             result.set_release(std::stof(_release));
@@ -100,4 +96,4 @@ Package PackageFileParser::parse()
 
     return result;
 }
-};
+}

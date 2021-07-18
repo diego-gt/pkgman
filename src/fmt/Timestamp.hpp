@@ -2,6 +2,6 @@
 
 #include <string>
 
-namespace dgt::fmt {
+namespace pm::fmt {
 std::string get_timestamp();
 }

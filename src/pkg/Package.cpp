@@ -1,7 +1,7 @@
 #include "Package.hpp"
 
-namespace dgt::pkg {
-Package::Package(std::string& name, float version, float release, std::string& description,
+namespace pm::pkg {
+[[maybe_unused]] Package::Package(std::string& name, float version, float release, std::string& description,
     std::string& arch)
 {
     m_name = name;

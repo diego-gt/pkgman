@@ -11,7 +11,7 @@
 
 #include "Timestamp.hpp"
 
-namespace dgt::fmt {
+namespace pm::fmt {
 std::string get_timestamp()
 {
     std::time_t time_now = std::time(nullptr);

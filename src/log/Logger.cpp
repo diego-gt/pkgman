@@ -4,10 +4,10 @@
 #include "Logger.hpp"
 #include "Timestamp.hpp"
 
-namespace dgt::log {
+namespace pm::log {
 Logger::Logger()
 {
-    dgt::fmt::section_header('*', 80, "BEGIN LOGGING");
+    pm::fmt::section_header('*', 80, "BEGIN LOGGING");
 }
 
 void Logger::error(const std::string& message)
@@ -15,7 +15,7 @@ void Logger::error(const std::string& message)
     std::cout << prefix_log(LogLevel::Error) << message << "\n";
 }
 
-void Logger::warning(const std::string& message)
+[[maybe_unused]] void Logger::warning(const std::string& message)
 {
     std::cout << prefix_log(LogLevel::Warning) << message << "\n";
 }
@@ -30,7 +30,7 @@ void Logger::info(const std::string& message)
     std::cout << prefix_log(LogLevel::Info) << message << "\n";
 }
 
-const std::string Logger::prefix_log(LogLevel level)
+std::string Logger::prefix_log(LogLevel level)
 {
     std::string level_str;
     switch (level) {
@@ -51,6 +51,6 @@ const std::string Logger::prefix_log(LogLevel level)
         break;
     }
 
-    return "(" + level_str + ")\t[" + dgt::fmt::get_timestamp() + "]:\t";
+    return "(" + level_str + ")\t[" + pm::fmt::get_timestamp() + "]:\t";
 }
 }

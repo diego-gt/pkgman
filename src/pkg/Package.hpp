@@ -3,19 +3,15 @@
 #include <iostream>
 #include <string>
 
-// 2021-07-08
-// This class is currently based off the contents of `data/make-PKGBUILD`.
-namespace dgt::pkg {
+namespace pm::pkg {
 class Package {
 private:
     std::string m_name;
     float m_version;
     float m_release;
-    std::string m_description;
-    std::string m_arch;
 
 public:
-    Package(std::string& name, float version, float release, std::string& description,
+    [[maybe_unused]] Package(std::string& name, float version, float release, std::string& description,
         std::string& arch);
     Package()
         : m_version(0)
