@@ -9,7 +9,7 @@
 #include <ctime>
 #include <string>
 
-#include "TimeUtils.hpp"
+#include "Timestamp.hpp"
 
 namespace dgt::fmt {
 std::string get_timestamp()

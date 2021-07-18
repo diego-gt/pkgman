@@ -2,7 +2,7 @@
 
 #include "Delimiter.hpp"
 #include "Logger.hpp"
-#include "TimeUtils.hpp"
+#include "Timestamp.hpp"
 
 namespace dgt::log {
 Logger::Logger()

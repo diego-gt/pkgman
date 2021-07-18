@@ -5,7 +5,7 @@
 
 // 2021-07-08
 // This class is currently based off the contents of `data/make-PKGBUILD`.
-namespace pkg {
+namespace dgt::pkg {
 class Package {
 private:
     std::string m_name;
@@ -29,8 +29,8 @@ public:
 
     void print_details()
     {
-        std::cout << "INFO:\n"
-                  << "Package: \t" << m_name << "\n"
+        std::cout << "Package details:\n"
+                  << "Name: \t" << m_name << "\n"
                   << "Version: \t" << m_version << "\n"
                   << "Release: \t" << m_release << std::endl;
     }

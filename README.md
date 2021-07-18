@@ -1,4 +1,4 @@
-# swupgrade
+# pkgman
 Basic tool to learn how package managers may work.
 
 This project is also a learning test bed for C++20 (hopefully).

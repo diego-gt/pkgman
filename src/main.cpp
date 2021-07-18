@@ -1,8 +1,10 @@
 #include <iostream>
+#include <string>
 
-#include "fmt/TimeUtils.hpp"
 #include "fmt/Delimiter.hpp"
+#include "fmt/Timestamp.hpp"
 #include "log/Logger.hpp"
+#include "pkg/PackageFileParser.hpp"
 
 int main()
 {
@@ -10,10 +12,13 @@ int main()
 
     auto lg = dgt::log::Logger();
 
-    lg.debug("Logging...");
-	lg.error("Logging...");
-	lg.warning("Logging...");
-	lg.info("Logging...");
+    std::string pkg_file = "data/make-PKGBUILD";
+    dgt::pkg::PackageFileParser pfp(pkg_file, dgt::pkg::PFF_ARCH);
+
+    pfp.init(&lg);
+
+    dgt::pkg::Package make = pfp.parse();
+    make.print_details();
 
     return 0;
 }

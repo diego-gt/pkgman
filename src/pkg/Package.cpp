@@ -1,6 +1,6 @@
 #include "Package.hpp"
 
-namespace pkg {
+namespace dgt::pkg {
 Package::Package(std::string& name, float version, float release, std::string& description,
     std::string& arch)
 {
